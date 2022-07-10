@@ -1,6 +1,7 @@
 package com.trgt.rysetii.learningresourcesapi.entity;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class LearningResource {
 
@@ -67,27 +68,31 @@ public class LearningResource {
         this.learningResourceStatus = learningResourceStatus;
     }
 
-    public LocalDate getCreatedDate() {
-        return createdDate;
+    public String getCreatedDate() {
+        return getFormattedDate(createdDate);
     }
 
     public void setCreatedDate(LocalDate createdDate) {
         this.createdDate = createdDate;
     }
 
-    public LocalDate getPublishedDate() {
-        return publishedDate;
+    public String getPublishedDate() {
+        return getFormattedDate(publishedDate);
     }
 
     public void setPublishedDate(LocalDate publishedDate) {
         this.publishedDate = publishedDate;
     }
 
-    public LocalDate getRetiredDate() {
-        return retiredDate;
+    public String getRetiredDate() {
+        return getFormattedDate(retiredDate);
     }
 
     public void setRetiredDate(LocalDate retiredDate) {
         this.retiredDate = retiredDate;
+    }
+
+    private String getFormattedDate(LocalDate date) {
+        return DateTimeFormatter.ofPattern("dd-MM-yyyy").format(date);
     }
 }
