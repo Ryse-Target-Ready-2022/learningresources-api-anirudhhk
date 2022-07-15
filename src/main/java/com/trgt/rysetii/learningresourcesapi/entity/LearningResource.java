@@ -1,11 +1,12 @@
 package com.trgt.rysetii.learningresourcesapi.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "learningresources")
-public class LearningResource {
+public class LearningResource implements Serializable {
 
     @Id
     @Column(name = "learning_resource_id")
