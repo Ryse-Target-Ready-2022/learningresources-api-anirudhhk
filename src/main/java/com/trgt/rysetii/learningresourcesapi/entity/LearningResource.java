@@ -1,17 +1,29 @@
 package com.trgt.rysetii.learningresourcesapi.entity;
 
+import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
+@Entity
+@Table(name = "learningresources")
 public class LearningResource {
 
+    @Id
+    @Column(name = "learning_resource_id")
     private Integer learningResourceId;
+    @Column(name = "learning_resource_name")
     private String productName;
+    @Column(name = "cost_price")
     private Double costPrice;
+    @Column(name = "selling_price")
     private Double sellingPrice;
+    @Column(name = "learning_resource_status")
+    @Enumerated(EnumType.STRING)
     private LearningResourceStatus learningResourceStatus;
+    @Column(name = "created_date")
     private LocalDate createdDate;
+    @Column(name = "published_date")
     private LocalDate publishedDate;
+    @Column(name = "retired_date")
     private LocalDate retiredDate;
 
     public LearningResource() {
@@ -68,31 +80,27 @@ public class LearningResource {
         this.learningResourceStatus = learningResourceStatus;
     }
 
-    public String getCreatedDate() {
-        return getFormattedDate(createdDate);
+    public LocalDate getCreatedDate() {
+        return this.createdDate;
     }
 
     public void setCreatedDate(LocalDate createdDate) {
         this.createdDate = createdDate;
     }
 
-    public String getPublishedDate() {
-        return getFormattedDate(publishedDate);
+    public LocalDate getPublishedDate() {
+        return this.publishedDate;
     }
 
     public void setPublishedDate(LocalDate publishedDate) {
         this.publishedDate = publishedDate;
     }
 
-    public String getRetiredDate() {
-        return getFormattedDate(retiredDate);
+    public LocalDate getRetiredDate() {
+        return this.retiredDate;
     }
 
     public void setRetiredDate(LocalDate retiredDate) {
         this.retiredDate = retiredDate;
-    }
-
-    private String getFormattedDate(LocalDate date) {
-        return DateTimeFormatter.ofPattern("dd-MM-yyyy").format(date);
     }
 }
